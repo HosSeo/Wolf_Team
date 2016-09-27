@@ -15,12 +15,12 @@ public class Fire : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if("Rock" == collision.gameObject.tag)
+        if ("Rock" == collision.gameObject.tag)
         {
-            Debug.Log("dsfsdf");
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
+
         }
     }
 }
