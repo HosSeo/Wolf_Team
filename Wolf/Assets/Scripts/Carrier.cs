@@ -10,6 +10,7 @@ public class Carrier : MonoBehaviour {
     // 이동속도
     [SerializeField]
     private float speed;
+
     private float step;
 
     // 대각선 움직임 유무
