@@ -68,7 +68,6 @@ public class Pulley : MonoBehaviour
 
     public void Down()
     {
-        Debug.Log("111");
         step = speed * Time.deltaTime;
         parent.transform.position = Vector2.MoveTowards(parent.transform.position, down, step);
     }

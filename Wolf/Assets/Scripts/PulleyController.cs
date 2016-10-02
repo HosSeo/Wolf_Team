@@ -45,7 +45,6 @@ public class PulleyController : MonoBehaviour {
         }
         else if (S_pulley2.IsCollision() != null)
         {
-            Debug.Log("222");
             S_pulley1.Up();
             S_pulley2.Down();
         }
