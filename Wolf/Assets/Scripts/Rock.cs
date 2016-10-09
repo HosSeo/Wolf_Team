@@ -11,7 +11,7 @@ public class Rock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(true == this.GetComponent<Rigidbody2D>().isKinematic)
+        if (true == this.GetComponent<Rigidbody2D>().isKinematic)
             this.GetComponent<Rigidbody2D>().isKinematic = false;
     }
 
@@ -21,6 +21,6 @@ public class Rock : MonoBehaviour
         {
             this.GetComponent<Rigidbody2D>().isKinematic = true;
         }
-   
+
     }
-}
+}  

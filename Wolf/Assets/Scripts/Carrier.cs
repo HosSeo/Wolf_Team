@@ -49,6 +49,5 @@ public class Carrier : MonoBehaviour {
             destination = standard;
             standard = this.transform.position;
         }
-
 	}
 }

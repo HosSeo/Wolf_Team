@@ -33,27 +33,20 @@ public class PulleyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-       
-
-
-        if (S_pulley1.IsCollision() != null)
+        if (true == S_pulley1.IsCollision() && false == S_pulley2.IsCollision())
         {
             S_pulley1.Down();
             S_pulley2.Up();
         }
-        else if (S_pulley2.IsCollision() != null)
+        else if (true == S_pulley2.IsCollision() && false == S_pulley1.IsCollision())
         {
             S_pulley1.Up();
             S_pulley2.Down();
         }
-        else if (S_pulley1.IsCollision() == null || S_pulley2.IsCollision() == null)
+        else// if (false == S_pulley1.IsCollision() && false == S_pulley2.IsCollision())
         {
             S_pulley1.Standard();
             S_pulley2.Standard();
         }
-
-
     }
 }

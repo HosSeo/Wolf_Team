@@ -41,9 +41,30 @@ public class Pulley : MonoBehaviour
         isCollision = false;
     }
 
-    public Collider2D IsCollision()
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        collisionOject = collision;
+        isCollision = true;
+    }
+
+    public Collider2D CollisionOJ()
     {
         return collisionOject;
+    }
+
+    public bool IsCollision()
+    {
+        return isCollision;
+    }
+
+    public void SetCollision(bool _value)
+    {
+       
+        if ("Player" != collisionOject.tag)
+        {
+            Debug.Log(collisionOject.tag);
+            isCollision = _value;
+        }
     }
 
     public bool Init(float _speed, float _distance)
@@ -62,8 +83,10 @@ public class Pulley : MonoBehaviour
 
     public void Up()
     {
+
         step = speed * Time.deltaTime;
         parent.transform.position = Vector2.MoveTowards(parent.transform.position, up, step);
+
     }
 
     public void Down()
