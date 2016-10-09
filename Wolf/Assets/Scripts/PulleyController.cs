@@ -14,7 +14,6 @@ public class PulleyController : MonoBehaviour {
 
     private Pulley S_pulley1;
     private Pulley S_pulley2;
-
     void Start()
     {
         S_pulley1 = GO_pulley1.GetComponentInChildren<Pulley>();
@@ -33,12 +32,12 @@ public class PulleyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (true == S_pulley1.IsCollision() && false == S_pulley2.IsCollision())
+        if (true == S_pulley1.GetCollision().IsCollision() && false == S_pulley2.GetCollision().IsCollision())
         {
             S_pulley1.Down();
             S_pulley2.Up();
         }
-        else if (true == S_pulley2.IsCollision() && false == S_pulley1.IsCollision())
+        else if (true == S_pulley2.GetCollision().IsCollision() && false == S_pulley1.GetCollision().IsCollision())
         {
             S_pulley1.Up();
             S_pulley2.Down();

@@ -6,7 +6,6 @@ public class Pulley : MonoBehaviour
     private float speed;
     private float maxDistance;
 
-    private bool isCollision;
     private Vector2 down;
     private Vector2 up;
 
@@ -14,12 +13,11 @@ public class Pulley : MonoBehaviour
     private float step;
 
     // Use this for initialization
-    private Collider2D collisionOject;
-    public GameObject parent;
+    Collision collision;
     void Start()
     {
         standard = this.transform.position;
-        collisionOject = null;
+        collision = this.gameObject.GetComponentInChildren<Collision>();
     }
 
     // Update is called once per frame
@@ -27,44 +25,10 @@ public class Pulley : MonoBehaviour
     {
 
     }
-
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    
+    public Collision GetCollision()
     {
-        collisionOject = collision;
-        isCollision = true;
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        collisionOject = null;
-        isCollision = false;
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        collisionOject = collision;
-        isCollision = true;
-    }
-
-    public Collider2D CollisionOJ()
-    {
-        return collisionOject;
-    }
-
-    public bool IsCollision()
-    {
-        return isCollision;
-    }
-
-    public void SetCollision(bool _value)
-    {
-       
-        if ("Player" != collisionOject.tag)
-        {
-            Debug.Log(collisionOject.tag);
-            isCollision = _value;
-        }
+        return collision;
     }
 
     public bool Init(float _speed, float _distance)
@@ -83,21 +47,20 @@ public class Pulley : MonoBehaviour
 
     public void Up()
     {
-
         step = speed * Time.deltaTime;
-        parent.transform.position = Vector2.MoveTowards(parent.transform.position, up, step);
+        this.transform.position = Vector2.MoveTowards(this.transform.position, up, step);
 
     }
 
     public void Down()
     {
         step = speed * Time.deltaTime;
-        parent.transform.position = Vector2.MoveTowards(parent.transform.position, down, step);
+        this.transform.position = Vector2.MoveTowards(this.transform.position, down, step);
     }
 
     public void Standard()
     {
         step = speed * Time.deltaTime;
-        parent.transform.position = Vector2.MoveTowards(parent.transform.position, standard, step);
+        this.transform.position = Vector2.MoveTowards(this.transform.position, standard, step);
     }
 }
