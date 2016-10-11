@@ -13,13 +13,14 @@ public class SkillManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            AshesEyesOn();
-        }
 
-
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && 0 < skillGage.GetSkillGage())
+            {
+                AshesEyesOn();
+                skillGage.Decrease();
+            }
+        
+        if(Input.GetKeyUp(KeyCode.LeftShift) || 0 >= skillGage.GetSkillGage())
         {
             AshesEyesOFF();
         }
