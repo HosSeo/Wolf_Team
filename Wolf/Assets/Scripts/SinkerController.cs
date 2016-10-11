@@ -34,13 +34,10 @@ public class SinkerController : MonoBehaviour {
         {
             return;
         }
-
         if (false == sinker.activeSelf)
         {
             Debug.Log("dd");
             pulleyCollision.SetCollision(false);
         }
-
-        
     }
 }

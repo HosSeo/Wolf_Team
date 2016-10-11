@@ -4,10 +4,12 @@ using System.Collections;
 public class SkillManager : MonoBehaviour {
 
     public Skill[] skill;
-	void Start () {
+    public GameObject Player;
 
-        
-	}
+    private SkillGage skillGage;
+	void Start () {
+        skillGage = Player.GetComponent<SkillGage>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
