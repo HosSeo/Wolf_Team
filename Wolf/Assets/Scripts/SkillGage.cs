@@ -18,16 +18,14 @@ public class SkillGage : MonoBehaviour {
         scale = gage.transform.localScale;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (0 < scale.x)
-        {
-            scale.x = skillGage / 100;
-            gage.transform.localScale = scale;
-        }
+
+    // Update is called once per frame
+    void Update()
+    {
+        scale.x = skillGage / 100;
+        gage.transform.localScale = scale;
     }
-    
+
     public float GetSkillGage()
     {
         return skillGage;
@@ -35,16 +33,15 @@ public class SkillGage : MonoBehaviour {
 
     public void Decrease()
     {
-        if (0 < skillGage)
+        if (0 <= skillGage)
         {
             skillGage -= value;
         }
-        Debug.Log(skillGage);
     }
 
     public void Increase()
     {
-        if (100 > skillGage)
+        if (100 >= skillGage)
         {
             skillGage += value;
         }

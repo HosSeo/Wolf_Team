@@ -14,6 +14,7 @@ public class SinkerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (null != sinker)
         {
             SetPosition();
@@ -23,8 +24,8 @@ public class SinkerController : MonoBehaviour {
 
     void SetPosition()
     {
-        sinkerPostion.x = this.transform.position.x + 2;
-        sinkerPostion.y = this.transform.position.y + sinker.transform.GetComponent<CircleCollider2D>().radius + 0.8f;
+        sinkerPostion.x = this.transform.position.x;
+        sinkerPostion.y = this.transform.position.y + sinker.transform.localScale.y - 0.5f;
         sinker.transform.position = sinkerPostion;
     }
 
@@ -36,7 +37,7 @@ public class SinkerController : MonoBehaviour {
         }
         if (false == sinker.activeSelf)
         {
-            Debug.Log("dd");
+            
             pulleyCollision.SetCollision(false);
         }
     }

@@ -10,15 +10,13 @@ public class RopeController : MonoBehaviour {
     [SerializeField]
     private float pulleyToRope;
     [SerializeField]
-    private float positionControl;
-    [SerializeField]
     private float ceilingHight;
 
     
 
 	void Start () {
         Vector2 ceilingPosition;
-        ceilingPosition.x = this.transform.position.x + this.transform.localScale.x + positionControl;
+        ceilingPosition.x = this.transform.position.x;// + this.transform.localScale.x + positionControl;
         ceilingPosition.y = ceilingHight;
 
         rope.SetPosition(0, ceilingPosition );
@@ -33,7 +31,7 @@ public class RopeController : MonoBehaviour {
     void ropeControl()
     {
         Vector2 ropePosition;
-        ropePosition.x = this.transform.position.x + this.transform.localScale.x + positionControl;
+        ropePosition.x = this.transform.position.x;// + this.transform.localScale.x + positionControl;
         ropePosition.y = this.transform.position.y + pulleyToRope;
 
         rope.SetPosition(1, ropePosition);
