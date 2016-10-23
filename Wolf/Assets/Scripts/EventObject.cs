@@ -4,10 +4,15 @@ using System.Collections;
 public class EventObject : MonoBehaviour {
 
     private Collision collision;
+    private bool interSucess = false;
+    
+    public ParticleSystem sucesseffect; 
+
+
 	// Use this for initialization
 	void Start () {
         collision = this.GetComponentInChildren<Collision>();
-
+        
     }
 	
 	// Update is called once per frame
@@ -18,15 +23,18 @@ public class EventObject : MonoBehaviour {
 
     void Interaction()
     {
-        if("Player" != collision.CollisionOJ().tag)
+        if ("Player" != collision.CollisionOJ().tag)
         {
             return;
         }
 
-        if (Input.GetKey(KeyCode.Z))
+        if(Input.GetKey(KeyCode.Z))
         {
-            collision.CollisionOJ().GetComponent<SkillGage>().Increase();
-        }
+            interSucess = collision.CollisionOJ().GetComponent<SkillGage>().Increase();
 
+            if (interSucess)
+                sucesseffect.Play();               
+            
+        }
     }
 }

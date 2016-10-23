@@ -40,11 +40,14 @@ public class SkillGage : MonoBehaviour {
         }
     }
 
-    public void Increase()
+    public bool Increase()
     {
-        if (100 >= skillGage)
+        if (100 > skillGage)
         {
-            skillGage += value;
+            skillGage  = 100;
+            return true;
         }
+
+        return false;
     }
 }
