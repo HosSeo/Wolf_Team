@@ -5,6 +5,7 @@ namespace UnityStandardAssets.Cameras
 {
     public class LookatTarget : AbstractTargetFollower
     {
+
         // A simple script to make one object look at another,
         // but with optional constraints which operate relative to
         // this gameobject's initial rotation.
@@ -46,7 +47,11 @@ namespace UnityStandardAssets.Cameras
             float yAngle = Mathf.Atan2(localTarget.x, localTarget.z)*Mathf.Rad2Deg;
 
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
-            transform.localRotation = m_OriginalRotation*Quaternion.Euler(0, yAngle, 0);
+
+            if (yAngle >= -0.618f)
+                transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
+            else
+                yAngle = -0.618f;
 
             // then recalculate new local target position for rotation around X
             localTarget = transform.InverseTransformPoint(m_Target.position);

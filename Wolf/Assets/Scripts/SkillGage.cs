@@ -12,17 +12,18 @@ public class SkillGage : MonoBehaviour {
     [SerializeField]
     private GameObject gage;
     private Vector3 scale;
+    private float originalXpos;
    
 	void Start () {
         skillGage = 100;
         scale = gage.transform.localScale;
-
+        originalXpos = scale.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scale.x = skillGage / 100;
+        scale.x = (skillGage / 100) * originalXpos;
         gage.transform.localScale = scale;
     }
 
@@ -39,11 +40,14 @@ public class SkillGage : MonoBehaviour {
         }
     }
 
-    public void Increase()
+    public bool Increase()
     {
-        if (100 >= skillGage)
+        if (100 > skillGage)
         {
-            skillGage += value;
+            skillGage  = 100;
+            return true;
         }
+
+        return false;
     }
 }
