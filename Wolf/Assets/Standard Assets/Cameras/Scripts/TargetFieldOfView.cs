@@ -40,13 +40,11 @@ namespace UnityStandardAssets.Cameras
             m_Cam.fieldOfView = Mathf.SmoothDamp(m_Cam.fieldOfView, requiredFOV, ref m_FovAdjustVelocity, m_FovAdjustTime);
         }
 
-
         public override void SetTarget(Transform newTransform)
         {
             base.SetTarget(newTransform);
             m_BoundSize = MaxBoundsExtent(newTransform, m_IncludeEffectsInSize);
         }
-
 
         public static float MaxBoundsExtent(Transform obj, bool includeEffects)
         {
