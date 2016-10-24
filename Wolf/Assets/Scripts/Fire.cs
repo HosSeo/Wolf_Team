@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
 {
@@ -20,7 +21,10 @@ public class Fire : MonoBehaviour
         if ("Rock" == collision.gameObject.tag)
         {
             Destroy(this.transform.parent.gameObject);
-
+        }
+        if ("Player" == collision.gameObject.tag)
+        {
+            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single );
         }
     }
 }

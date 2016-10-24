@@ -4,7 +4,6 @@ using System.Collections;
 public class Pulley : MonoBehaviour
 {
     private float speed;
-    private float maxDistance;
 
     private Vector2 down;
     private Vector2 up;
@@ -31,31 +30,22 @@ public class Pulley : MonoBehaviour
         return collision;
     }
 
-    public bool Init(float _speed, float _distance)
+    public bool Init(float _speed )
     {
         speed = _speed;
-        maxDistance = _distance;
-
-        up.x = this.transform.position.x;
-        up.y = this.transform.position.y + maxDistance;
-
-        down.x = this.transform.position.x;
-        down.y = this.transform.position.y - maxDistance;
-
         return true;
     }
 
     public void Up()
     {
         step = speed * Time.deltaTime;
-        this.transform.position = Vector2.MoveTowards(this.transform.position, up, step);
-
+        this.transform.Translate(Vector2.up * step);
     }
 
     public void Down()
     {
         step = speed * Time.deltaTime;
-        this.transform.position = Vector2.MoveTowards(this.transform.position, down, step);
+        this.transform.Translate(Vector2.down * step);
     }
 
     public void Standard()
