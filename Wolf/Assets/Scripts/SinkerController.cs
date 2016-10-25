@@ -25,7 +25,7 @@ public class SinkerController : MonoBehaviour {
     void SetPosition()
     {
         sinkerPostion.x = this.transform.position.x;
-        sinkerPostion.y = this.transform.position.y + sinker.transform.localScale.y - 0.5f;
+        sinkerPostion.y = this.transform.position.y + sinker.transform.localScale.y - 0.8f;
         sinker.transform.position = sinkerPostion;
     }
 

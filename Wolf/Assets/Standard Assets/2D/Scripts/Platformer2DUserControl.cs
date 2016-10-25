@@ -28,7 +28,6 @@ namespace UnityStandardAssets._2D
             }
         }
 
-
         private void FixedUpdate()
         {
             // Read the inputs.
