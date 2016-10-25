@@ -31,9 +31,9 @@ public class EventObject : MonoBehaviour {
         if(Input.GetKey(KeyCode.Z))
         {
             interSucess = collision.CollisionOJ().GetComponent<SkillGage>().Increase();
-
-            if (interSucess)
-                sucesseffect.Play();               
+                       
+            if (interSucess)           
+                sucesseffect.Play();                       
             
         }
     }

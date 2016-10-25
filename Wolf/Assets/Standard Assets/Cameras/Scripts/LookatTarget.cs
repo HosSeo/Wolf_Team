@@ -48,10 +48,10 @@ namespace UnityStandardAssets.Cameras
 
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
 
-            if (yAngle >= -0.618f)
+            if (yAngle >= 1.718f)
                 transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
             else
-                yAngle = -0.618f;
+                yAngle = 1.718f;
 
             // then recalculate new local target position for rotation around X
             localTarget = transform.InverseTransformPoint(m_Target.position);
