@@ -47,7 +47,6 @@ public class SkillGage : MonoBehaviour {
             skillGage  = 100;
             return true;
         }
-
         return false;
     }
 }
