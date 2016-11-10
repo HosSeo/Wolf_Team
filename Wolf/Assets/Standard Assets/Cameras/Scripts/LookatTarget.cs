@@ -48,17 +48,17 @@ namespace UnityStandardAssets.Cameras
 
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
 
-
-            if (yAngle >= 8.0f)
-                yAngle = 8.0f;
+            Debug.Log(yAngle);
             
 
-            if (yAngle >= 2.3f)
+
+            if (yAngle >= -0.1f)
                 transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
             else
-                yAngle = 2.3f;
+                yAngle = -0.1f;
 
-            
+            if (yAngle >= 5.6f)
+                yAngle = 5.6f;
 
             // then recalculate new local target position for rotation around X
             localTarget = transform.InverseTransformPoint(m_Target.position);
@@ -72,7 +72,7 @@ namespace UnityStandardAssets.Cameras
 
             var targetAngles = new Vector3(m_FollowAngles.x + Mathf.DeltaAngle(m_FollowAngles.x, xAngle),
                                            m_FollowAngles.y + Mathf.DeltaAngle(m_FollowAngles.y, yAngle));
-            Debug.Log(xAngle);
+
             // smoothly interpolate the current angles to the target angles
             m_FollowAngles = Vector3.SmoothDamp(m_FollowAngles, targetAngles, ref m_FollowVelocity, m_FollowSpeed);
 

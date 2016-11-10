@@ -15,7 +15,6 @@ public class SkillManager : MonoBehaviour {
         {
             if("AsheEyes" == skill[i].tag )
             {
-                Debug.Log(skill[i].tag);
                 asheEye[i] = skill[i];
             }
         }
@@ -37,7 +36,7 @@ public class SkillManager : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.P))
         {
-            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
 
     }
