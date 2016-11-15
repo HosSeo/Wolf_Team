@@ -9,15 +9,18 @@ public class Status : MonoBehaviour {
     {
         fadeIn = false;
     }
-
+    // Update is called once per frame
     void Update()
     {
         if (false == fadeIn)
         {
             if(true == CameraEffect.Instance.FadeIn())
+            {
                 fadeIn = true;
+            }
         }
     }
+
     public void Die()
     {
         GameManager.Instance.ReStart();
