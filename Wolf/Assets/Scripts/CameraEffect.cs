@@ -9,7 +9,7 @@ public class CameraEffect {
     private Image fade;
     private float fades = 0f;
     private float time = 0;
-
+    private bool effectOn = false;
     private CameraEffect()
     {
     }
@@ -23,6 +23,18 @@ public class CameraEffect {
                 instance = new CameraEffect();
             }
             return instance;
+        }
+    }
+
+    public bool EffectOn
+    {
+        get
+        {
+            return effectOn;
+        }
+        set
+        {
+            effectOn = value;
         }
     }
 
@@ -43,8 +55,7 @@ public class CameraEffect {
         }
         else if( 1.0f < fades )
         {
-            fades = 0f;
-            time = 0;
+            effectOn = false;
             return true;
         }
         return false;
@@ -68,6 +79,7 @@ public class CameraEffect {
         }
         else if (0f >= fades)
         {
+            effectOn = false;
             return true;
         }
         return false;

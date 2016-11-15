@@ -7,15 +7,25 @@ public class SkillManager : MonoBehaviour {
     public GameObject Player;
     
     private SkillGage skillGage;
-    private Skill[] asheEye;
-	void Start () {
+    private Skill[] UnClocking;
+    private Skill[] Clocking;
+    int clockingCount = 0;
+    int unClockingCount = 0;
+
+    void Start () {
         skillGage = Player.GetComponent<SkillGage>();
-        asheEye = new Skill[skill.Length];
+        UnClocking = new Skill[skill.Length];
+        Clocking = new Skill[skill.Length];
+       
         for (int i = 0; i < skill.Length; ++i)
         {
-            if("AsheEyes" == skill[i].tag )
+            if("UnClocking" == skill[i].tag )
             {
-                asheEye[i] = skill[i];
+                UnClocking[unClockingCount++] = skill[i];
+            }
+            else if ("Clocking" == skill[i].tag)
+            {
+                Clocking[clockingCount++] = skill[i];
             }
         }
     }
@@ -25,34 +35,63 @@ public class SkillManager : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.LeftShift) && 0 < skillGage.GetSkillGage())
         {
-            AshesEyesOn();
+            UnClockingOn();
+            ClockingOn();
             skillGage.Decrease();
         }
         if (Input.GetKeyUp(KeyCode.LeftShift) || 0 >= skillGage.GetSkillGage())
         {
-            AshesEyesOFF();
+            UnClockingOFF();
+            ClockingOFF();
         }
 
+        ReStart();
 
+    }
+
+    void UnClockingOn()
+    {
+        for(int i = 0; i < unClockingCount; ++i)
+        {
+            UnClocking[i].Action();
+        }
+    }
+    void UnClockingOFF()
+    {
+        for (int i = 0; i < unClockingCount; ++i)
+        {
+            UnClocking[i].DeAction();
+        }
+    }
+
+    void ClockingOn()
+    {
+        for (int i = 0; i < clockingCount; ++i)
+        {
+            Clocking[i].DeAction();
+        }
+    }
+    void ClockingOFF()
+    {
+        for (int i = 0; i < clockingCount; ++i)
+        {
+            Clocking[i].Action();
+        }
+    }
+
+    void ReStart()
+    {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            CameraEffect.Instance.EffectOn = true;
         }
 
-    }
-
-    void AshesEyesOn()
-    {
-        for(int i = 0; i < asheEye.Length; ++i)
+        if (true == CameraEffect.Instance.EffectOn)
         {
-            asheEye[i].Action();
-        }
-    }
-    void AshesEyesOFF()
-    {
-        for (int i = 0; i < asheEye.Length; ++i)
-        {
-            asheEye[i].DeAction();
+            if (true == CameraEffect.Instance.FadeOut())
+            {
+                GameManager.Instance.ReStart();
+            }
         }
     }
 }
