@@ -48,12 +48,16 @@ namespace UnityStandardAssets.Cameras
 
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
 
+<<<<<<< HEAD
 
             if (yAngle >= 8.0f)
                 yAngle = 8.0f;
             
 
             if (yAngle >= 2.3f)
+=======
+            if (yAngle >= -0.1f)
+>>>>>>> Merge
                 transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
             else
                 yAngle = 2.3f;

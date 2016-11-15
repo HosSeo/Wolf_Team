@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 1ff62fbb3d1ef9141b7191f63d01fa27
 timeCreated: 1479200184
+=======
+guid: 153d0ec5318162e49a0609a6aeae53ab
+timeCreated: 1479206758
+>>>>>>> Merge
 licenseType: Free
 DefaultImporter:
   userData: 

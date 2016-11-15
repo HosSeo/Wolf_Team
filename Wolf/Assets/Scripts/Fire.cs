@@ -3,7 +3,12 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
+<<<<<<< HEAD
 {
+=======
+{ 
+    private Collider2D player;
+>>>>>>> Merge
     // Use this for initialization
     void Start()
     {
@@ -13,6 +18,17 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
+=======
+        if (false == CameraEffect.Instance.EffectOn )
+            return;
+
+        if (true == CameraEffect.Instance.FadeOut())
+        {
+            player.gameObject.GetComponent<Status>().Die();
+            player = null;
+        }
+>>>>>>> Merge
 
     }
 
@@ -24,7 +40,12 @@ public class Fire : MonoBehaviour
         }
         if ("Player" == collision.gameObject.tag)
         {
+<<<<<<< HEAD
             SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single );
+=======
+            player = collision;
+            CameraEffect.Instance.EffectOn = true;
+>>>>>>> Merge
         }
     }
 }
