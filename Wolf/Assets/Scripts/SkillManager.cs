@@ -7,15 +7,17 @@ public class SkillManager : MonoBehaviour {
     public GameObject Player;
     
     private SkillGage skillGage;
-    private Skill[] asheEye;
-	void Start () {
+    private Skill[] unClocking;
+    private Skill[] Clocking;
+    void Start () {
         skillGage = Player.GetComponent<SkillGage>();
-        asheEye = new Skill[skill.Length];
+        unClocking = new Skill[skill.Length];
         for (int i = 0; i < skill.Length; ++i)
         {
-            if("AsheEyes" == skill[i].tag )
+            if("unClocking" == skill[i].tag )
             {
-                asheEye[i] = skill[i];
+                Debug.Log(skill[i].tag);
+                unClocking[i] = skill[i];
             }
         }
     }
@@ -36,23 +38,23 @@ public class SkillManager : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.P))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single);
         }
 
     }
 
     void AshesEyesOn()
     {
-        for(int i = 0; i < asheEye.Length; ++i)
+        for(int i = 0; i < unClocking.Length; ++i)
         {
-            asheEye[i].Action();
+            unClocking[i].Action();
         }
     }
     void AshesEyesOFF()
     {
-        for (int i = 0; i < asheEye.Length; ++i)
+        for (int i = 0; i < unClocking.Length; ++i)
         {
-            asheEye[i].DeAction();
+            unClocking[i].DeAction();
         }
     }
 }
