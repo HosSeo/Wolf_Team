@@ -4,25 +4,27 @@ using UnityEngine.SceneManagement;
 
 public class ClearZone : MonoBehaviour {
 
+<<<<<<< HEAD
     [SerializeField]
     private string stageName;
 
+=======
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+>>>>>>> parent of 2fa0c82... Clocking , UnClocking 만듬
 	void Update () {
-
-        if (false == CameraEffect.Instance.EffectOn)
-            return;
-
-        if (true == CameraEffect.Instance.FadeOut())
-        {
-            GameManager.Instance.MoveStage(stageName);
-        }
-    }
+	
+	}
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if ("Player" == collision.gameObject.tag)
         {
-            CameraEffect.Instance.EffectOn = true;
+            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single);
         }
     }
 }

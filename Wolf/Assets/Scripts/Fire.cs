@@ -3,18 +3,27 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
-{ 
+{
+    [SerializeField]
+    private GameObject effect;
+
+    [SerializeField]
+    private float delay;
+
+    private bool effectOn;
+
     private Collider2D player;
     // Update is called once per frame
     void Update()
     {
-        if (false == CameraEffect.Instance.EffectOn )
+        if (false == effectOn)
             return;
 
         if (true == CameraEffect.Instance.FadeOut())
         {
             player.gameObject.GetComponent<Status>().Die();
             player = null;
+            effectOn = false;
         }
     }
 
@@ -27,7 +36,7 @@ public class Fire : MonoBehaviour
         if ("Player" == collision.gameObject.tag)
         {
             player = collision;
-            CameraEffect.Instance.EffectOn = true;
+            effectOn = true;
         }
     }
 }

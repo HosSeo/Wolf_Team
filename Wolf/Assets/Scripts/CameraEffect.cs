@@ -9,8 +9,16 @@ public class CameraEffect {
     private Image fade;
     private float fades = 0f;
     private float time = 0;
+<<<<<<< HEAD
     private bool effectOn = false;
 
+=======
+
+    private CameraEffect()
+    {
+    }
+   
+>>>>>>> parent of 2fa0c82... Clocking , UnClocking 만듬
     public static CameraEffect Instance
     {
         get
@@ -20,18 +28,6 @@ public class CameraEffect {
                 instance = new CameraEffect();
             }
             return instance;
-        }
-    }
-
-    public bool EffectOn
-    {
-        get
-        {
-            return effectOn;
-        }
-        set
-        {
-            effectOn = value;
         }
     }
 
@@ -52,7 +48,8 @@ public class CameraEffect {
         }
         else if( 1.0f < fades )
         {
-            effectOn = false;
+            fades = 0f;
+            time = 0;
             return true;
         }
         return false;
@@ -76,7 +73,6 @@ public class CameraEffect {
         }
         else if (0f >= fades)
         {
-            effectOn = false;
             return true;
         }
         return false;

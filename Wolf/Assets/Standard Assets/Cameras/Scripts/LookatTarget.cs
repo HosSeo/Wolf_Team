@@ -53,6 +53,11 @@ namespace UnityStandardAssets.Cameras
                 yAngle = 8.0f;
             
             if (yAngle >= 2.3f)
+            Debug.Log(yAngle);
+            
+
+
+            if (yAngle >= -0.1f)
                 transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
             else
                 yAngle = 2.3f;

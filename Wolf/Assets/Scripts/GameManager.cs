@@ -25,9 +25,12 @@ public class GameManager {
     {
          SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
+<<<<<<< HEAD
 
     public void MoveStage(string _stageName)
     {
         SceneManager.LoadScene(_stageName, LoadSceneMode.Single);
     }
+=======
+>>>>>>> parent of 2fa0c82... Clocking , UnClocking 만듬
 }
