@@ -10,10 +10,7 @@ public class CameraEffect {
     private float fades = 0f;
     private float time = 0;
     private bool effectOn = false;
-    private CameraEffect()
-    {
-    }
-   
+
     public static CameraEffect Instance
     {
         get

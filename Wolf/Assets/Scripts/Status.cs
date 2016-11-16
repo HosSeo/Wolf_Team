@@ -7,6 +7,7 @@ public class Status : MonoBehaviour {
 
     void Start()
     {
+        Debug.Log("asdweqwe");
         fadeIn = false;
     }
     // Update is called once per frame

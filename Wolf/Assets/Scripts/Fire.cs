@@ -3,23 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
-<<<<<<< HEAD
-{
-=======
 { 
     private Collider2D player;
->>>>>>> Merge
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-=======
         if (false == CameraEffect.Instance.EffectOn )
             return;
 
@@ -28,8 +16,6 @@ public class Fire : MonoBehaviour
             player.gameObject.GetComponent<Status>().Die();
             player = null;
         }
->>>>>>> Merge
-
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -40,12 +26,8 @@ public class Fire : MonoBehaviour
         }
         if ("Player" == collision.gameObject.tag)
         {
-<<<<<<< HEAD
-            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single );
-=======
             player = collision;
             CameraEffect.Instance.EffectOn = true;
->>>>>>> Merge
         }
     }
 }

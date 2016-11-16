@@ -7,19 +7,6 @@ public class SkillManager : MonoBehaviour {
     public GameObject Player;
     
     private SkillGage skillGage;
-<<<<<<< HEAD
-    private Skill[] unClocking;
-    private Skill[] Clocking;
-    void Start () {
-        skillGage = Player.GetComponent<SkillGage>();
-        unClocking = new Skill[skill.Length];
-        for (int i = 0; i < skill.Length; ++i)
-        {
-            if("unClocking" == skill[i].tag )
-            {
-                Debug.Log(skill[i].tag);
-                unClocking[i] = skill[i];
-=======
     private Skill[] UnClocking;
     private Skill[] Clocking;
     int clockingCount = 0;
@@ -39,7 +26,6 @@ public class SkillManager : MonoBehaviour {
             else if ("Clocking" == skill[i].tag)
             {
                 Clocking[clockingCount++] = skill[i];
->>>>>>> Merge
             }
         }
     }
@@ -67,9 +53,6 @@ public class SkillManager : MonoBehaviour {
     {
         for(int i = 0; i < unClockingCount; ++i)
         {
-<<<<<<< HEAD
-            SceneManager.LoadScene("tutorial Stage", LoadSceneMode.Single);
-=======
             UnClocking[i].Action();
         }
     }
@@ -78,30 +61,18 @@ public class SkillManager : MonoBehaviour {
         for (int i = 0; i < unClockingCount; ++i)
         {
             UnClocking[i].DeAction();
->>>>>>> Merge
         }
     }
 
     void ClockingOn()
     {
-<<<<<<< HEAD
-        for(int i = 0; i < unClocking.Length; ++i)
-        {
-            unClocking[i].Action();
-=======
         for (int i = 0; i < clockingCount; ++i)
         {
             Clocking[i].DeAction();
->>>>>>> Merge
         }
     }
     void ClockingOFF()
     {
-<<<<<<< HEAD
-        for (int i = 0; i < unClocking.Length; ++i)
-        {
-            unClocking[i].DeAction();
-=======
         for (int i = 0; i < clockingCount; ++i)
         {
             Clocking[i].Action();
@@ -121,7 +92,6 @@ public class SkillManager : MonoBehaviour {
             {
                 GameManager.Instance.ReStart();
             }
->>>>>>> Merge
         }
     }
 }

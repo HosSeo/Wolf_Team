@@ -25,6 +25,7 @@ public class GameManager {
     {
          SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
+
     public void MoveStage(string _stageName)
     {
         SceneManager.LoadScene(_stageName, LoadSceneMode.Single);

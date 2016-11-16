@@ -31,8 +31,6 @@ public class PulleyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-            Debug.Log(S_pulley2.transform.localPosition.y);
         
         if (true == S_pulley2.GetCollision().IsCollision() && true == S_pulley1.GetCollision().IsCollision())
         {
