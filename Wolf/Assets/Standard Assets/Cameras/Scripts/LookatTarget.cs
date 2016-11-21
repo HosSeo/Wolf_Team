@@ -5,6 +5,14 @@ namespace UnityStandardAssets.Cameras
 {
     public class LookatTarget : AbstractTargetFollower
     {
+        [SerializeField]
+        private float yAngleMax;
+        [SerializeField]
+        private float yAngleMin;
+        [SerializeField]
+        private float xAngleMax;
+        [SerializeField]
+        private float xAngleMin;
 
         // A simple script to make one object look at another,
         // but with optional constraints which operate relative to
@@ -49,18 +57,13 @@ namespace UnityStandardAssets.Cameras
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
 
 
-            if (yAngle >= 8.0f)
-                yAngle = 8.0f;
-            
-            if (yAngle >= 2.3f)
-            Debug.Log(yAngle);
-            
+            if (yAngle >= yAngleMax)
+                yAngle = yAngleMax;
 
-
-            if (yAngle >= -0.1f)
+            if (yAngle >= yAngleMin)
                 transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
             else
-                yAngle = 2.3f;
+                yAngle = yAngleMin;
 
             
 
@@ -69,10 +72,10 @@ namespace UnityStandardAssets.Cameras
             float xAngle = Mathf.Atan2(localTarget.y, localTarget.z)*Mathf.Rad2Deg;
             xAngle = Mathf.Clamp(xAngle, -m_RotationRange.x*0.5f, m_RotationRange.x*0.5f);
 
-            if (xAngle >= 0.23f)
-                xAngle = 0.23f;
-            else if (xAngle <= -0.28f)
-                xAngle = -0.28f;
+            if (xAngle >= xAngleMax)
+                xAngle = xAngleMax;
+            else if (xAngle <= xAngleMin)
+                xAngle = xAngleMin;
 
             var targetAngles = new Vector3(m_FollowAngles.x + Mathf.DeltaAngle(m_FollowAngles.x, xAngle),
                                            m_FollowAngles.y + Mathf.DeltaAngle(m_FollowAngles.y, yAngle));

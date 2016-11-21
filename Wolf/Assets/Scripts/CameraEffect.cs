@@ -9,16 +9,13 @@ public class CameraEffect {
     private Image fade;
     private float fades = 0f;
     private float time = 0;
-<<<<<<< HEAD
-    private bool effectOn = false;
 
-=======
-
+    private bool effectOn;
     private CameraEffect()
     {
+        effectOn = false;
     }
    
->>>>>>> parent of 2fa0c82... Clocking , UnClocking 만듬
     public static CameraEffect Instance
     {
         get
@@ -31,6 +28,17 @@ public class CameraEffect {
         }
     }
 
+    public bool EffectOn
+    {
+        get
+        {
+            return effectOn;
+        }
+        set
+        {
+            effectOn = value;
+        }
+    }
     public bool FadeOut()
     {
         if (null == fade)
@@ -38,6 +46,7 @@ public class CameraEffect {
             fade = GameObject.FindWithTag("Fade").GetComponent<Image>();
             fades = 0f;
         }
+
         time += Time.deltaTime;
         
         if( 1.0f >= fades && time >= 0.1f )
@@ -48,8 +57,7 @@ public class CameraEffect {
         }
         else if( 1.0f < fades )
         {
-            fades = 0f;
-            time = 0;
+            effectOn = false;
             return true;
         }
         return false;
@@ -73,6 +81,7 @@ public class CameraEffect {
         }
         else if (0f >= fades)
         {
+            effectOn = false;
             return true;
         }
         return false;

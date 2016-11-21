@@ -4,20 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject effect;
-
-    [SerializeField]
-    private float delay;
-
-    private bool effectOn;
+    private bool effectOn = false;
 
     private Collider2D player;
     // Update is called once per frame
     void Update()
     {
-        if (false == effectOn)
-            return;
+        if (false == effectOn )
+            return; 
 
         if (true == CameraEffect.Instance.FadeOut())
         {

@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 public class SkillManager : MonoBehaviour {
-
-    public Skill[] skill;
     public GameObject Player;
     
     private SkillGage skillGage;
-    private Skill[] asheEye;
-	void Start () {
+
+    private GameObject[] unClocking;
+    private GameObject[] clocking;
+
+    void Start () {
+
         skillGage = Player.GetComponent<SkillGage>();
-        asheEye = new Skill[skill.Length];
-        for (int i = 0; i < skill.Length; ++i)
+        unClocking = GameObject.FindGameObjectsWithTag("UnClocking");
+        clocking = GameObject.FindGameObjectsWithTag("Clocking");
+
+        for (int i = 0; i < unClocking.Length; ++i)
         {
-            if("AsheEyes" == skill[i].tag )
-            {
-                asheEye[i] = skill[i];
-            }
+            unClocking[i].GetComponent<Skill>().DeAction();
         }
+
     }
 
     // Update is called once per frame
@@ -25,14 +28,15 @@ public class SkillManager : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.LeftShift) && 0 < skillGage.GetSkillGage())
         {
-            AshesEyesOn();
+            UnClockingOn();
+            ClockingOn();
             skillGage.Decrease();
         }
         if (Input.GetKeyUp(KeyCode.LeftShift) || 0 >= skillGage.GetSkillGage())
         {
-            AshesEyesOFF();
+            ClockingOFF();
+            UnClockingOFF();
         }
-
 
         if (Input.GetKeyUp(KeyCode.P))
         {
@@ -41,18 +45,34 @@ public class SkillManager : MonoBehaviour {
 
     }
 
-    void AshesEyesOn()
+    void UnClockingOn()
     {
-        for(int i = 0; i < asheEye.Length; ++i)
+        for(int i = 0; i < unClocking.Length; ++i)
         {
-            asheEye[i].Action();
+            unClocking[i].GetComponent<Skill>().Action();
         }
     }
-    void AshesEyesOFF()
+
+    void UnClockingOFF()
     {
-        for (int i = 0; i < asheEye.Length; ++i)
+        for (int i = 0; i < unClocking.Length; ++i)
         {
-            asheEye[i].DeAction();
+            unClocking[i].GetComponent<Skill>().DeAction();
+        }
+    }
+
+    void ClockingOn()
+    {
+        for (int i = 0; i < clocking.Length; ++i)
+        {
+            clocking[i].GetComponent<Skill>().DeAction();
+        }
+    }
+    void ClockingOFF()
+    {
+        for (int i = 0; i < clocking.Length; ++i)
+        {
+            clocking[i].GetComponent<Skill>().Action();
         }
     }
 }
