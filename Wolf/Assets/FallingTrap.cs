@@ -15,6 +15,6 @@ public class FallingTrap : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         step = speed * Time.deltaTime;
-        this.transform.Translate(Vector2.down * step);
+        this.transform.Translate(Vector2.up * step);
     }
 }

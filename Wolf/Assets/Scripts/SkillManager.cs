@@ -16,10 +16,11 @@ public class SkillManager : MonoBehaviour {
         unClocking = GameObject.FindGameObjectsWithTag("UnClocking");
         clocking = GameObject.FindGameObjectsWithTag("Clocking");
 
-        for (int i = 0; i < unClocking.Length; ++i)
-        {
-            unClocking[i].GetComponent<Skill>().DeAction();
-        }
+        UnClockingOFF();
+        //for (int i = 0; i < unClocking.Length; ++i)
+        //{
+        //    unClocking[i].GetComponent<Skill>().DeAction();
+        //}
 
     }
 

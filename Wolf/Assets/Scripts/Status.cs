@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Status : MonoBehaviour {
+public class Status : MonoBehaviour
+{
 
     private bool fadeIn;
 
@@ -14,9 +15,17 @@ public class Status : MonoBehaviour {
     {
         if (false == fadeIn)
         {
-            if(true == CameraEffect.Instance.FadeIn())
+            if (true == CameraEffect.Instance.FadeIn())
             {
                 fadeIn = true;
+            }
+        }
+
+        if( true == CameraEffect.Instance.EffectOn )
+        {
+            if(true == CameraEffect.Instance.FadeOut())
+            {
+                Die();
             }
         }
     }
@@ -24,5 +33,18 @@ public class Status : MonoBehaviour {
     public void Die()
     {
         GameManager.Instance.ReStart();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if("Danger" == collision.tag)
+        {
+            CameraEffect.Instance.EffectOn = true;
+        }
+
+        if ("Clocking" == collision.tag || "UnClocking" == collision.tag)
+        {
+            CameraEffect.Instance.EffectOn = true;
+        }
     }
 }
