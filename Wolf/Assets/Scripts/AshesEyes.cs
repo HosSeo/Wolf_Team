@@ -8,8 +8,14 @@ public class AshesEyes : Skill {
 	
 	// Update is called once per frame
 	void Update () {
-        if (true == this.gameObject.GetComponent<BoxCollider2D>().isTrigger)
+        if(null != this.gameObject.GetComponent<PolygonCollider2D>())
+        {
+            gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
+        }
+        else if (true == this.gameObject.GetComponent<BoxCollider2D>().isTrigger)
+        {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
     }
 
     public override void Action()
@@ -19,7 +25,14 @@ public class AshesEyes : Skill {
 
     public override void DeAction()
     {
-        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        if (null != this.gameObject.GetComponent<PolygonCollider2D>())
+        {
+            gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+        }
+        else
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
         this.gameObject.SetActive(false);
+
     }
 }

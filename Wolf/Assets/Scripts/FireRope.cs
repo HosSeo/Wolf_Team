@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FireRope : MonoBehaviour {
+public class FireRope : LeverActivity {
 
     [SerializeField]
     private GameObject unFireRope;
@@ -61,7 +61,7 @@ public class FireRope : MonoBehaviour {
         if (0 < unFireRope.transform.localScale.x)
         {
             unFireRope.transform.localScale = new Vector2(unFireRope.transform.localScale.x - (speed * Time.deltaTime), unFireRope.transform.localScale.y);
-            unFireRope.transform.Translate(Vector2.right * (speed * Time.deltaTime));
+            unFireRope.transform.Translate(Vector2.right * ( speed * Time.deltaTime * this.transform.localScale.x ));
         }
         else
         {
