@@ -57,13 +57,13 @@ namespace UnityStandardAssets.Cameras
             yAngle = Mathf.Clamp(yAngle, -m_RotationRange.y*0.5f, m_RotationRange.y*0.5f);
 
 
-            //if (yAngle >= yAngleMax)
-            //    yAngle = yAngleMax;
+            if (yAngle >= yAngleMax)
+                yAngle = yAngleMax;
 
-            //if (yAngle >= yAngleMin)
-            //    transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
-            //else
-            //    yAngle = yAngleMin;
+            if (yAngle >= yAngleMin)
+                transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
+            else
+                yAngle = yAngleMin;
 
             transform.localRotation = m_OriginalRotation * Quaternion.Euler(0, yAngle, 0);
 
@@ -72,10 +72,10 @@ namespace UnityStandardAssets.Cameras
             float xAngle = Mathf.Atan2(localTarget.y, localTarget.z)*Mathf.Rad2Deg;
             xAngle = Mathf.Clamp(xAngle, -m_RotationRange.x*0.5f, m_RotationRange.x*0.5f);
 
-            //if (xAngle >= xAngleMax)
-            //    xAngle = xAngleMax;
-            //else if (xAngle <= xAngleMin)
-            //    xAngle = xAngleMin;
+            if (xAngle >= xAngleMax)
+                xAngle = xAngleMax;
+            else if (xAngle <= xAngleMin)
+                xAngle = xAngleMin;
 
             var targetAngles = new Vector3(m_FollowAngles.x + Mathf.DeltaAngle(m_FollowAngles.x, xAngle),
                                            m_FollowAngles.y + Mathf.DeltaAngle(m_FollowAngles.y, yAngle));

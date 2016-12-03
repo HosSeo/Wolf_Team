@@ -42,6 +42,11 @@ public class Status : MonoBehaviour
             CameraEffect.Instance.EffectOn = true;
         }
 
+        if ("Danger_Clocking" == collision.tag)
+        {
+            CameraEffect.Instance.EffectOn = true;
+        }
+
         if ("Clocking" == collision.tag || "UnClocking" == collision.tag)
         {
             CameraEffect.Instance.EffectOn = true;

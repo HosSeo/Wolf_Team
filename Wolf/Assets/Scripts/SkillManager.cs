@@ -8,12 +8,14 @@ public class SkillManager : MonoBehaviour {
     private SkillGage skillGage;
 
     private GameObject[] unClocking;
+    private GameObject[] dangerClocking;
     private GameObject[] clocking;
 
     void Start () {
 
         skillGage = Player.GetComponent<SkillGage>();
         unClocking = GameObject.FindGameObjectsWithTag("UnClocking");
+        dangerClocking = GameObject.FindGameObjectsWithTag("Danger_Clocking");
         clocking = GameObject.FindGameObjectsWithTag("Clocking");
 
         UnClockingOFF();
@@ -68,12 +70,21 @@ public class SkillManager : MonoBehaviour {
         {
             clocking[i].GetComponent<Skill>().DeAction();
         }
+        for (int i = 0; i < dangerClocking.Length; ++i)
+        {
+            dangerClocking[i].GetComponent<Skill>().DeAction();
+        }
     }
+
     void ClockingOFF()
     {
         for (int i = 0; i < clocking.Length; ++i)
         {
             clocking[i].GetComponent<Skill>().Action();
+        }
+        for (int i = 0; i < dangerClocking.Length; ++i)
+        {
+            dangerClocking[i].GetComponent<Skill>().DeAction();
         }
     }
 }

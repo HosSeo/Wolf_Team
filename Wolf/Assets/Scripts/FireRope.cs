@@ -58,7 +58,7 @@ public class FireRope : LeverActivity {
 
     void Burn()
     {
-        if (0 < unFireRope.transform.localScale.x)
+        if (0 <= unFireRope.transform.localScale.x)
         {
             unFireRope.transform.localScale = new Vector2(unFireRope.transform.localScale.x - (speed * Time.deltaTime), unFireRope.transform.localScale.y);
             unFireRope.transform.Translate(Vector2.right * ( speed * Time.deltaTime * this.transform.localScale.x ));
